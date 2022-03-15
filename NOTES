@@ -1,0 +1,5 @@
+Generate RB files from proto buffer
+grpc_tools_ruby_protoc -Iprotos --ruby_out=server/ --grpc_out=server/lib knowledge.proto
+
+User the rpc server
+grpc-client-cli --proto protos/knowledge.proto 0.0.0.0:50051

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package knowledge;
+
+message Request {
+  string title = 1;
+  string author = 2;
+}
+
+message Response {
+  string title = 1;
+  enum Status {
+    SUBMITTED = 0;
+    APPROVED = 1;
+    CANCELED = 2;
+  }
+  Status status = 2;
+  int64 presented_at = 3;
+}
+
+service Presentation {
+  rpc Register(Request) returns (Response) {}
+}
