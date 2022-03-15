@@ -11,8 +11,5 @@ DB = Sequel.connect('sqlite://my.db')
 #   Integer :presented_at
 # end
 
-
-# Models
-# ------
 class Presentation < Sequel::Model
 end
