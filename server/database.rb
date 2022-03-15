@@ -1,8 +1,8 @@
 require 'sequel'
-require 'sqlite3'
 
 DB = Sequel.connect('sqlite://my.db')
 
+# Enable the firs time to create the table
 # DB.create_table :presentations do
 #   primary_key :id
 #   String :title
@@ -11,5 +11,8 @@ DB = Sequel.connect('sqlite://my.db')
 #   Integer :presented_at
 # end
 
+
+# Models
+# ------
 class Presentation < Sequel::Model
 end
