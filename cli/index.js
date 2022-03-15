@@ -30,7 +30,13 @@ cli.parse(
   ['apply', 'withdraw', 'list']
 );
 
-const install = function () { }
+const list = function () {
+  let call = client.List({});
+
+  call.on('data', (item) => { console.log(item) });
+  call.on('end', () => { });
+}
+
 const withdraw = function () { }
 
 const callback = (err, response) => {
@@ -53,7 +59,7 @@ cli.main(function () {
 
   switch (cli.args[0]) {
     case 'list':
-      install();
+      list();
       break;
     case 'apply':
       apply();

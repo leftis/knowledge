@@ -10,14 +10,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :author, :string, 2
     end
     add_message "knowledge.Response" do
-      optional :title, :string, 1
-      optional :status, :enum, 2, "knowledge.Response.Status"
-      optional :presented_at, :int64, 3
+      optional :id, :int32, 1
+      optional :title, :string, 2
+      optional :status, :enum, 3, "knowledge.Response.Status"
+      optional :presented_at, :int64, 4
+      optional :author, :string, 5
     end
     add_enum "knowledge.Response.Status" do
       value :SUBMITTED, 0
       value :APPROVED, 1
       value :CANCELED, 2
+    end
+    add_message "knowledge.Empty" do
     end
   end
 end
@@ -26,4 +30,5 @@ module Knowledge
   Request = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Request").msgclass
   Response = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Response").msgclass
   Response::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Response.Status").enummodule
+  Empty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Empty").msgclass
 end

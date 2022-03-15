@@ -14,6 +14,7 @@ module Knowledge
       self.service_name = 'knowledge.Presentation'
 
       rpc :Register, ::Knowledge::Request, ::Knowledge::Response
+      rpc :List, ::Knowledge::Empty, stream(::Knowledge::Response)
     end
 
     Stub = Service.rpc_stub_class
