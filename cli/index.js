@@ -1,29 +1,56 @@
 #!/usr/bin/env node
-var cli = require('cli');
+const cli = require('cli');
+const grpc = require('@grpc/grpc-js');
+const protoLoader = require('@grpc/proto-loader');
 
-const multiArgError = 'Only one command is supported';
+const ERRORS = {
+  multiple_args: 'Only one command is supported'
+};
+
+const PROTO_PATH = '../protos/knowledge.proto';
+
+const packageDefinition = protoLoader.loadSync(
+  PROTO_PATH,
+  {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+  });
+const knowledgeProto = grpc.loadPackageDefinition(packageDefinition).knowledge;
+
+const target = "0.0.0.0:50051"
+const client = new knowledgeProto.Presentation(
+  target, grpc.credentials.createInsecure()
+);
 
 cli.parse(
   null,
   ['apply', 'withdraw', 'list']
 );
 
-const install = function () {
-  console.log("installing");
+const install = function () { }
+const withdraw = function () { }
+
+const callback = (err, response) => {
+  if (err) throw err;
+
+  console.log('Response:', response);
+  client.close();
 }
 
 const apply = function () {
-  console.log("apply");
-}
-
-const withdraw = function () {
-  console.log("withdraw");
+  client.Register({ title: 'title' }, callback);
 }
 
 cli.main(function () {
   cli.setArgv(process.argv);
 
-  if (cli.argc > 1) { cli.error(multiArgError) }
+  if (cli.argc > 1) {
+    cli.error(ERRORS.multiple_args)
+  }
+
   switch (cli.args[0]) {
     case 'list':
       install();

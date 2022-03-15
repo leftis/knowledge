@@ -11,6 +11,8 @@
   "license": "ISC",
   "bin": "index.js",
   "dependencies": {
+    "@grpc/grpc-js": "^1.5.8",
+    "@grpc/proto-loader": "^0.6.9",
     "cli": "^1.0.1"
   }
 }
