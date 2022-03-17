@@ -20,7 +20,7 @@ const packageDefinition = protoLoader.loadSync(
   });
 const knowledgeProto = grpc.loadPackageDefinition(packageDefinition).knowledge;
 
-const target = "0.0.0.0:50051"
+const target = "0.0.0.0:49153"
 const client = new knowledgeProto.Presentation(
   target, grpc.credentials.createInsecure()
 );

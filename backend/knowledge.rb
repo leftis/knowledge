@@ -1,6 +1,7 @@
+require_relative 'database/database'
+require_relative 'models/presentation'
+
 require 'services/knowledge_service'
-require 'pry'
-require_relative 'database'
 
 class KnowledgeService < Knowledge::Presentation::Service
   def register(req, _)
