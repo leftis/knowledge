@@ -2,11 +2,12 @@
 # Source: knowledge.proto for package 'knowledge'
 
 require 'grpc'
-require_relative '../pbs/knowledge_pb'
+require 'knowledge_pb'
 
 module Knowledge
   module Presentation
     class Service
+
       include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
@@ -15,6 +16,7 @@ module Knowledge
 
       rpc :Register, ::Knowledge::Request, ::Knowledge::Response
       rpc :List, ::Knowledge::Empty, stream(::Knowledge::Response)
+      rpc :Withdraw, ::Knowledge::WidthdrawRequest, ::Knowledge::Empty
     end
 
     Stub = Service.rpc_stub_class

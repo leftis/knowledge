@@ -6,8 +6,8 @@ Sequel.migration do
       primary_key :id
       String :title, null: false
       String :author, null: false
-      String :status, null: false
-      Integer :presented_at
+      Integer :status, null: false
+      Date :presented_at
     end
   end
 

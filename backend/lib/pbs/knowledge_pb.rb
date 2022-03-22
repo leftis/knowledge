@@ -21,6 +21,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :APPROVED, 1
       value :CANCELED, 2
     end
+    add_message "knowledge.WidthdrawRequest" do
+      optional :id, :int32, 1
+      optional :author, :string, 2
+    end
     add_message "knowledge.Empty" do
     end
   end
@@ -30,5 +34,6 @@ module Knowledge
   Request = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Request").msgclass
   Response = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Response").msgclass
   Response::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Response.Status").enummodule
+  WidthdrawRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.WidthdrawRequest").msgclass
   Empty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("knowledge.Empty").msgclass
 end

@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
-lib_dir = File.join(__dir__, 'lib')
-$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
+Dir.glob('./**/*.rb') { |f| $LOAD_PATH.unshift(File.dirname(f)) }
 
-require_relative 'server'
-require_relative 'knowledge'
+require 'grpc'
+require 'sequel'
+require 'server'
+require 'database'
+require 'knowledge_component'
 
-Server.new('0.0.0.0', '50051', [KnowledgeService])
+Server.new('0.0.0.0', '50051', [KnowledgeComponent])

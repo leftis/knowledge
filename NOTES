@@ -3,3 +3,6 @@ grpc_tools_ruby_protoc -Iprotos --ruby_out=server/ --grpc_out=server/lib knowled
 
 User the rpc server
 grpc-client-cli --proto protos/knowledge.proto 0.0.0.0:50051
+
+running migrations
+sequel -m database/migrations sqlite://my.db

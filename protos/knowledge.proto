@@ -20,9 +20,15 @@ message Response {
   string author = 5;
 }
 
+message WidthdrawRequest {
+  int32 id = 1;
+  string author = 2;
+}
+
 message Empty {}
 
 service Presentation {
   rpc Register(Request) returns (Response) {}
   rpc List(Empty) returns (stream Response) {}
+  rpc Withdraw(WidthdrawRequest) returns (Empty) {}
 }

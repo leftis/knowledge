@@ -1,5 +1,3 @@
-require 'grpc'
-
 class Server
   attr_accessor :grpc_instance
 
